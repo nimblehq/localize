@@ -11,10 +11,11 @@ enum ReadingFileFormat {
     case swift
     case strings
     
-    var pattern: String {
+    var regexPattern: String {
         switch self {
         case .swift:        return "\"(\\w+)\\.(\\w+)\\.(\\w+)\".localized"
         case .strings:      return "(\\/\\* (.*) \\*\\/(\r\n|\r|\n))?\"(\\w+)\\.(\\w+)\\.(\\w+)\" = \"(.*)\";"
         }
     }
+    
 }

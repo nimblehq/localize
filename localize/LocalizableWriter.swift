@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias MatchDictionary = [MatchString: String?]
-
 final class LocalizableWriter {
     
     enum Error: Swift.Error {

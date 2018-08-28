@@ -16,3 +16,12 @@ extension Dictionary {
     }
     
 }
+
+extension Dictionary where Key == MatchString, Value == String? {
+    
+    init(_ pairs: [StringMatcher.Result]) {
+        self.init()
+        pairs.forEach { self[$0.matchString] = $0.value }
+    }
+    
+}

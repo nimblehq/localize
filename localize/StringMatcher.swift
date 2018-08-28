@@ -26,7 +26,7 @@ struct StringMatcher {
     }
     
     func find(in string: String) throws -> [Result] {
-        let regex = try! NSRegularExpression(pattern: format.pattern, options: .caseInsensitive)
+        let regex = try! NSRegularExpression(pattern: format.regexPattern, options: .caseInsensitive)
         let result = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
         
         return try result
@@ -35,7 +35,6 @@ struct StringMatcher {
     }
     
     // MARK: - private
-    
     
     private func createMatchStringWithValue(from string: String,
                                             with result: NSTextCheckingResult) throws -> Result {
@@ -65,7 +64,7 @@ struct StringMatcher {
     
     private func substring(from string: String, in range: NSRange) throws -> String {
         guard let range = Range(range, in: string) else {
-            throw MatchError.cannotGetCapturedGroup
+            throw Error.cannotGetCapturedGroup
         }
         return String(string[range])
     }

@@ -6,6 +6,8 @@
 //  Copyright © 2018 Nimbl3. All rights reserved.
 //
 
+typealias MatchDictionary = [MatchString: String?]
+
 struct MatchString: Hashable, Comparable, CustomStringConvertible {
     
     let domain: String
