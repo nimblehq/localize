@@ -10,10 +10,25 @@ import Foundation
 
 final class Runner {
     
+    var verbose = false
+    
     func run() throws {
+        log(step: "Generating strings...")
         let newDictionary = try getNewMatchDictionary()
-        let localizebleDictionary = try getLocalizableDictionary()
+        
+        log(step: "Getting current localizable.strings files...")
+        let localizableDictionary = try getLocalizableDictionary()
+        
+        log(step: "Merging new strings with current ones...")
+        let result = updated(localizableDictionary, with: newDictionary)
+        
+        log(step: "Writing to localizable.strings files...")
+        try writeLocalizables(with: result)
+        
+        log(step: "Success! 🎉")
     }
+    
+    // MARK: - private steps
     
     private func getNewMatchDictionary() throws -> MatchDictionary {
         var dictionary = MatchDictionary()
@@ -38,6 +53,26 @@ final class Runner {
             dictionary[url] = MatchDictionary(result)
         }
         return dictionary
+    }
+    
+    private func updated(_ dictionary: [URL: MatchDictionary],
+                         with newMatchDictionary: MatchDictionary) -> [URL: MatchDictionary] {
+        var result = [URL: MatchDictionary]()
+        dictionary.forEach { result[$0.key] = newMatchDictionary.merging($0.value) { $1 } }
+        return result
+    }
+    
+    private func writeLocalizables(with dictionary: [URL: MatchDictionary]) throws {
+        try dictionary.forEach { url, matchDictionary in
+            let writer = LocalizableWriter()
+            try writer.write(at: url, with: matchDictionary)
+        }
+    }
+    
+    // MARK: - private helper
+    
+    private func log(step: String) {
+        print("### " + step + " ###\n")
     }
     
 }
