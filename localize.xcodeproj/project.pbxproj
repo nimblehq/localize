@@ -15,6 +15,7 @@
 		210004592135615700790CD5 /* LocalizableWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210004582135615700790CD5 /* LocalizableWriter.swift */; };
 		2100045B2135632500790CD5 /* Dictionary+Creational.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100045A2135632500790CD5 /* Dictionary+Creational.swift */; };
 		2100045D2135657C00790CD5 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100045C2135657C00790CD5 /* Runner.swift */; };
+		2100045F2136581700790CD5 /* UnlocalizedStringFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100045E2136581700790CD5 /* UnlocalizedStringFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		210004582135615700790CD5 /* LocalizableWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableWriter.swift; sourceTree = "<group>"; };
 		2100045A2135632500790CD5 /* Dictionary+Creational.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Creational.swift"; sourceTree = "<group>"; };
 		2100045C2135657C00790CD5 /* Runner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
+		2100045E2136581700790CD5 /* UnlocalizedStringFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlocalizedStringFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				210004582135615700790CD5 /* LocalizableWriter.swift */,
 				2100045A2135632500790CD5 /* Dictionary+Creational.swift */,
 				2100045C2135657C00790CD5 /* Runner.swift */,
+				2100045E2136581700790CD5 /* UnlocalizedStringFinder.swift */,
 			);
 			path = localize;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				2100045D2135657C00790CD5 /* Runner.swift in Sources */,
 				210004552135611C00790CD5 /* ReadingFileFormat.swift in Sources */,
 				210004572135613700790CD5 /* FileIterator.swift in Sources */,
+				2100045F2136581700790CD5 /* UnlocalizedStringFinder.swift in Sources */,
 				21000451213560DB00790CD5 /* MatchString.swift in Sources */,
 				210004592135615700790CD5 /* LocalizableWriter.swift in Sources */,
 				2100044A213560C000790CD5 /* main.swift in Sources */,

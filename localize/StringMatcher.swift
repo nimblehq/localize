@@ -26,7 +26,7 @@ struct StringMatcher {
     }
     
     func find(in string: String) throws -> [Result] {
-        let regex = try! NSRegularExpression(pattern: format.regexPattern, options: .caseInsensitive)
+        let regex = try NSRegularExpression(pattern: format.regexPattern, options: .caseInsensitive)
         let result = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
         
         return try result
