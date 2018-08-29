@@ -29,13 +29,16 @@ final class FileIterator {
     }
     
     func enumerate(action: (URL, String) -> Void) throws {
-        let directoryURL = URL(fileURLWithPath: "")
+        let currentPath = CommandLine.arguments[0]
+        let baseURL = URL(fileURLWithPath: fileManager.currentDirectoryPath)
+        let directoryURL = URL(fileURLWithPath: currentPath, relativeTo: baseURL)
+            .deletingLastPathComponent()
         guard
             let enumerator = fileManager.enumerator(at: directoryURL,
                                                     includingPropertiesForKeys: [.isDirectoryKey],
                                                     options: [.skipsHiddenFiles],
                                                     errorHandler: nil)
-            else { return }
+        else { return }
         
         for case let fileURL as URL in enumerator {
             if try isURLDirectory(fileURL), excludedFolderNames.contains(fileURL.lastPathComponent) {

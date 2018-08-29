@@ -10,7 +10,7 @@ import Foundation
 
 final class Runner {
     
-    var verbose = false
+    var verbose = true
     
     func run() throws {
         log(step: "Generating strings...")
@@ -49,9 +49,11 @@ final class Runner {
         
         var dictionary = [URL: MatchDictionary]()
         try iterator.enumerate { url, content in
+            logIfNeeded("Found localizable.strings at " + url.relativePath + "\n")
             guard let result = try? matcher.find(in: content) else { return }
             dictionary[url] = MatchDictionary(result)
         }
+        
         return dictionary
     }
     
@@ -64,6 +66,8 @@ final class Runner {
     
     private func writeLocalizables(with dictionary: [URL: MatchDictionary]) throws {
         try dictionary.forEach { url, matchDictionary in
+            logIfNeeded("writing localizable.strings at \(url.relativePath)\n")
+            
             let writer = LocalizableWriter()
             try writer.write(at: url, with: matchDictionary)
         }
@@ -73,6 +77,11 @@ final class Runner {
     
     private func log(step: String) {
         print("### " + step + " ###\n")
+    }
+    
+    private func logIfNeeded(_ text: String) {
+        guard verbose else { return }
+        print("> " + text)
     }
     
 }

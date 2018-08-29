@@ -28,7 +28,7 @@ final class LocalizableWriter {
                 """
             }
             .joined(separator: "\n\n")
-        print(content)
+        try content.write(to: url, atomically: true, encoding: .utf8)
     }
     
 }
