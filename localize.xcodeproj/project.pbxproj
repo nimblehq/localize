@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2140DD602216833800FCAF8F /* GenerateStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD5F2216833800FCAF8F /* GenerateStringsStep.swift */; };
+		2140DD6322169E5800FCAF8F /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6222169E5800FCAF8F /* Step.swift */; };
+		2140DD6522169E6E00FCAF8F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6422169E6E00FCAF8F /* Result.swift */; };
+		2140DD6722169EB300FCAF8F /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6622169EB300FCAF8F /* BaseError.swift */; };
 		OBJ_31 /* Dictionary+Creational.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Dictionary+Creational.swift */; };
 		OBJ_32 /* FileIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* FileIterator.swift */; };
 		OBJ_33 /* LocalizableWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* LocalizableWriter.swift */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2140DD5F2216833800FCAF8F /* GenerateStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateStringsStep.swift; sourceTree = "<group>"; };
+		2140DD6222169E5800FCAF8F /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		2140DD6422169E6E00FCAF8F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		2140DD6622169EB300FCAF8F /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
 		OBJ_10 /* FileIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIterator.swift; sourceTree = "<group>"; };
 		OBJ_11 /* LocalizableWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableWriter.swift; sourceTree = "<group>"; };
 		OBJ_12 /* MatchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchString.swift; sourceTree = "<group>"; };
@@ -100,19 +108,37 @@
 			children = (
 				OBJ_12 /* MatchString.swift */,
 				OBJ_13 /* ReadingFileFormat.swift */,
-				OBJ_15 /* StringMatcher.swift */,
+				2140DD6422169E6E00FCAF8F /* Result.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		2140DD5B221677B600FCAF8F /* Steps */ = {
+		2140DD5B221677B600FCAF8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_10 /* FileIterator.swift */,
 				OBJ_11 /* LocalizableWriter.swift */,
+				OBJ_15 /* StringMatcher.swift */,
 				OBJ_16 /* UnlocalizedStringFinder.swift */,
 			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2140DD5E2216831900FCAF8F /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				2140DD5F2216833800FCAF8F /* GenerateStringsStep.swift */,
+			);
 			path = Steps;
+			sourceTree = "<group>";
+		};
+		2140DD6122169E3F00FCAF8F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2140DD6222169E5800FCAF8F /* Step.swift */,
+				2140DD6622169EB300FCAF8F /* BaseError.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		OBJ_18 /* Tests */ = {
@@ -142,7 +168,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -150,7 +176,6 @@
 				OBJ_18 /* Tests */,
 				OBJ_23 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -164,9 +189,11 @@
 		OBJ_8 /* localize */ = {
 			isa = PBXGroup;
 			children = (
-				2140DD5B221677B600FCAF8F /* Steps */,
+				2140DD6122169E3F00FCAF8F /* Protocols */,
 				2140DD592216775A00FCAF8F /* Extensions */,
 				2140DD5A2216777400FCAF8F /* Models */,
+				2140DD5E2216831900FCAF8F /* Steps */,
+				2140DD5B221677B600FCAF8F /* Utilities */,
 				OBJ_14 /* Runner.swift */,
 				OBJ_17 /* main.swift */,
 			);
@@ -239,7 +266,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_23 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,11 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				2140DD6322169E5800FCAF8F /* Step.swift in Sources */,
+				2140DD602216833800FCAF8F /* GenerateStringsStep.swift in Sources */,
 				OBJ_31 /* Dictionary+Creational.swift in Sources */,
 				OBJ_32 /* FileIterator.swift in Sources */,
 				OBJ_33 /* LocalizableWriter.swift in Sources */,
 				OBJ_34 /* MatchString.swift in Sources */,
+				2140DD6522169E6E00FCAF8F /* Result.swift in Sources */,
 				OBJ_35 /* ReadingFileFormat.swift in Sources */,
+				2140DD6722169EB300FCAF8F /* BaseError.swift in Sources */,
 				OBJ_36 /* Runner.swift in Sources */,
 				OBJ_37 /* StringMatcher.swift in Sources */,
 				OBJ_38 /* UnlocalizedStringFinder.swift in Sources */,
