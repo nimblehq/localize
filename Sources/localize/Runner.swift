@@ -42,6 +42,8 @@ final class Runner {
         log(step: "Success! 🎉")
     }
     
+    // MARK: - private helper
+    
     @discardableResult
     private func run<RunStep: Step>(step: RunStep) throws -> Result<RunStep.Output, RunStep.Error> {
         log(step: RunStep.name)
@@ -54,16 +56,13 @@ final class Runner {
         return result
     }
     
-    // MARK: - private steps
-        // MARK: - private helper
-    
     private func log(step: String) {
         print("### " + step + " ###\n")
     }
     
     private func logIfNeeded(_ text: String) {
         guard verbose else { return }
-        print("> " + text)
+        print("> " + text + "\n")
     }
     
 }
