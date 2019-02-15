@@ -11,7 +11,7 @@ import Foundation
 final class FileIterator {
     
     enum Error: Swift.Error {
-        case invalidURLPath
+        case invalidURLPath, unsupportedOS
     }
     
     private let fileManager = FileManager.default
@@ -29,8 +29,7 @@ final class FileIterator {
     }
     
     func enumerate(action: (URL, String) -> Void) throws {
-        // todo: - update
-        guard #available(OSX 10.11, *) else { throw Error.invalidURLPath }
+        guard #available(OSX 10.11, *) else { throw Error.unsupportedOS }
         
         let currentPath = CommandLine.arguments[0]
         let baseURL = URL(fileURLWithPath: fileManager.currentDirectoryPath)
