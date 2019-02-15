@@ -29,7 +29,7 @@ final class Runner {
         }
 
         guard
-            let combinedMatchDictioanry = try run(step: CombineStringsStep(
+            let combinedMatchDictionary = try run(step: CombineStringsStep(
                 localizableDictionary: urlForMatchDictionary,
                 iteratedMatchDictionary: iteratedLocalizedKeys)
             ).output
@@ -37,8 +37,7 @@ final class Runner {
             throw Error.noOutput(stepName: CombineStringsStep.name, type: CombineStringsStep.Output.self)
         }
         
-        log(step: "Writing to localizable.strings files...")
-        try writeLocalizables(with: result)
+        try run(step: WriteLocalizablesStep(writingDictionary: combinedMatchDictionary))
         
         log(step: "Success! 🎉")
     }
@@ -56,35 +55,7 @@ final class Runner {
     }
     
     // MARK: - private steps
-    
-    private func updated(_ dictionary: [URL: MatchDictionary],
-                         with newMatchDictionary: MatchDictionary) -> [URL: MatchDictionary] {
-        var result = [URL: MatchDictionary]()
-        dictionary.forEach {
-            logIfNeeded("")
-            logIfNeeded($0.key.relativePath)
-            logIfNeeded("")
-            result[$0.key] = newMatchDictionary.merging($0.value) {
-                if $0 != $1 { logIfNeeded("selecting \($1 ?? "-") over \($0 ?? "-")") }
-                return $1
-            }
-        }
-
-        return result
-    }
-    
-    private func writeLocalizables(with dictionary: [URL: MatchDictionary]) throws {
-        try dictionary
-            .filter { $0.key.lastPathComponent == "Localizable.strings" }
-            .forEach { url, matchDictionary in
-            logIfNeeded("writing localizable.strings at \(url.relativePath)\n")
-            
-            let writer = LocalizableWriter()
-            try writer.write(at: url, with: matchDictionary)
-        }
-    }
-    
-    // MARK: - private helper
+        // MARK: - private helper
     
     private func log(step: String) {
         print("### " + step + " ###\n")

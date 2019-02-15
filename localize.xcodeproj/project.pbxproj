@@ -27,6 +27,7 @@
 		2140DD6722169EB300FCAF8F /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6622169EB300FCAF8F /* BaseError.swift */; };
 		2140DD6A2216A41800FCAF8F /* GetLocalizableStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD692216A41800FCAF8F /* GetLocalizableStringsStep.swift */; };
 		2140DD6C2216AC8B00FCAF8F /* CombineStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */; };
+		2140DD6E2216AFF800FCAF8F /* WriteLocalizablesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6D2216AFF800FCAF8F /* WriteLocalizablesStep.swift */; };
 		OBJ_31 /* Dictionary+Creational.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Dictionary+Creational.swift */; };
 		OBJ_32 /* FileIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* FileIterator.swift */; };
 		OBJ_33 /* LocalizableWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* LocalizableWriter.swift */; };
@@ -65,6 +66,7 @@
 		2140DD6622169EB300FCAF8F /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
 		2140DD692216A41800FCAF8F /* GetLocalizableStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocalizableStringsStep.swift; sourceTree = "<group>"; };
 		2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineStringsStep.swift; sourceTree = "<group>"; };
+		2140DD6D2216AFF800FCAF8F /* WriteLocalizablesStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteLocalizablesStep.swift; sourceTree = "<group>"; };
 		OBJ_10 /* FileIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIterator.swift; sourceTree = "<group>"; };
 		OBJ_11 /* LocalizableWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableWriter.swift; sourceTree = "<group>"; };
 		OBJ_12 /* MatchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchString.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				2140DD5F2216833800FCAF8F /* GenerateStringsStep.swift */,
 				2140DD692216A41800FCAF8F /* GetLocalizableStringsStep.swift */,
 				2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */,
+				2140DD6D2216AFF800FCAF8F /* WriteLocalizablesStep.swift */,
 			);
 			path = Steps;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				OBJ_36 /* Runner.swift in Sources */,
 				OBJ_37 /* StringMatcher.swift in Sources */,
 				OBJ_38 /* UnlocalizedStringFinder.swift in Sources */,
+				2140DD6E2216AFF800FCAF8F /* WriteLocalizablesStep.swift in Sources */,
 				OBJ_39 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

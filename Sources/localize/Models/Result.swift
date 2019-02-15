@@ -22,4 +22,9 @@ enum Result<Output, Error: Swift.Error> {
         return nil
     }
     
+    var isSuccess: Bool {
+        if case .success = self { return true }
+        return false
+    }
+    
 }
