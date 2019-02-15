@@ -7,22 +7,36 @@
 
 import Foundation
 
+extension Collection {
+    
+    func map<U>(_ keyPath: KeyPath<Element, U>) -> [U] {
+        return map { $0[keyPath: keyPath] }
+    }
+    
+}
+
+enum FileExtension: String {
+    
+    case swift
+    case strings
+
+}
+
 final class GenerateStringsStep: Step {
     
     enum Error: BaseError {
         case iterationFailure(Swift.Error)
     }
     
-    static let name: String = "Generate strings"
+    static let name: String = "Generate strings from .swift files"
     
     static let description: String = "Gather all localized keys in the project and generate a dictionary"
     
     var verbose: Bool = true
     
     private let matcher = StringMatcher(format: .swift)
-    
-    private let iterator = FileIterator(acceptedFileExtensions: ["swift"],
-                                        excludedFolderNames: ["Pods"])
+    private let iterator = FileIterator(acceptedFileExtensions: [.swift],
+                                        excludedFolderNames: ["Pod"])
     
     // MARK: - step
     

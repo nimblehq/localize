@@ -31,7 +31,7 @@ extension Runner {
     
     func findUnlocalizedStrings() throws {
         let finder = UnlocalizedStringFinder()
-        let iterator = FileIterator(acceptedFileExtensions: ["swift"],
+        let iterator = FileIterator(acceptedFileExtensions: [.swift],
                                     excludedFolderNames: ["Pods", "BraiveTests", "BraiveUITests"])
         try iterator.enumerate { url, content in
             guard

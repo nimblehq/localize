@@ -25,6 +25,7 @@
 		2140DD6322169E5800FCAF8F /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6222169E5800FCAF8F /* Step.swift */; };
 		2140DD6522169E6E00FCAF8F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6422169E6E00FCAF8F /* Result.swift */; };
 		2140DD6722169EB300FCAF8F /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6622169EB300FCAF8F /* BaseError.swift */; };
+		2140DD6A2216A41800FCAF8F /* GetCurrentLocalizableStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD692216A41800FCAF8F /* GetCurrentLocalizableStringsStep.swift */; };
 		OBJ_31 /* Dictionary+Creational.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Dictionary+Creational.swift */; };
 		OBJ_32 /* FileIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* FileIterator.swift */; };
 		OBJ_33 /* LocalizableWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* LocalizableWriter.swift */; };
@@ -61,6 +62,7 @@
 		2140DD6222169E5800FCAF8F /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		2140DD6422169E6E00FCAF8F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		2140DD6622169EB300FCAF8F /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
+		2140DD692216A41800FCAF8F /* GetCurrentLocalizableStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentLocalizableStringsStep.swift; sourceTree = "<group>"; };
 		OBJ_10 /* FileIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIterator.swift; sourceTree = "<group>"; };
 		OBJ_11 /* LocalizableWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableWriter.swift; sourceTree = "<group>"; };
 		OBJ_12 /* MatchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchString.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				2140DD5F2216833800FCAF8F /* GenerateStringsStep.swift */,
+				2140DD692216A41800FCAF8F /* GetCurrentLocalizableStringsStep.swift */,
 			);
 			path = Steps;
 			sourceTree = "<group>";
@@ -189,10 +192,10 @@
 		OBJ_8 /* localize */ = {
 			isa = PBXGroup;
 			children = (
-				2140DD6122169E3F00FCAF8F /* Protocols */,
 				2140DD592216775A00FCAF8F /* Extensions */,
 				2140DD5A2216777400FCAF8F /* Models */,
 				2140DD5E2216831900FCAF8F /* Steps */,
+				2140DD6122169E3F00FCAF8F /* Protocols */,
 				2140DD5B221677B600FCAF8F /* Utilities */,
 				OBJ_14 /* Runner.swift */,
 				OBJ_17 /* main.swift */,
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				2140DD6A2216A41800FCAF8F /* GetCurrentLocalizableStringsStep.swift in Sources */,
 				2140DD6322169E5800FCAF8F /* Step.swift in Sources */,
 				2140DD602216833800FCAF8F /* GenerateStringsStep.swift in Sources */,
 				OBJ_31 /* Dictionary+Creational.swift in Sources */,

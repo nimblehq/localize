@@ -19,17 +19,18 @@ final class Runner {
     var verbose = true
     
     func run() throws {
-        guard let dictionary = try run(step: GenerateStringsStep()).output else {
-            throw Error.noOutput(stepName: GenerateStringsStep.name,
-                                 type: GenerateStringsStep.Output.self)
+        guard let iteratedLocalizedKeys = try run(step: GenerateStringsStep()).output else {
+            throw Error.noOutput(stepName: GenerateStringsStep.name, type: GenerateStringsStep.Output.self)
         }
         
-        log(step: "Getting current localizable.strings files...")
-        let localizableDictionary = try getLocalizableDictionary()
-        
+        guard let urlForMatchDictionary = try run(step: GetCurrentLocalizableStringsStep()).output else {
+            throw Error.noOutput(stepName: GetCurrentLocalizableStringsStep.name,
+                                 type: GetCurrentLocalizableStringsStep.Output.self)
+        }
+
         log(step: "Merging new strings with current ones...")
-        let result = updated(localizableDictionary, with: dictionary)
-        
+        let result = updated(urlForMatchDictionary, with: iteratedLocalizedKeys)
+
         log(step: "Writing to localizable.strings files...")
         try writeLocalizables(with: result)
         
@@ -49,37 +50,6 @@ final class Runner {
     }
     
     // MARK: - private steps
-    
-    private func getNewMatchDictionary() throws -> MatchDictionary {
-        var dictionary = MatchDictionary()
-        let matcher = StringMatcher(format: .swift)
-        let iterator = FileIterator(acceptedFileExtensions: ["swift"],
-                                    excludedFolderNames: ["Pods"])
-        try iterator.enumerate { url, content in
-            guard
-                let result = try? matcher.find(in: content),
-                !result.isEmpty
-            else { return }
-            dictionary.merge(result) { $1 }
-            logIfNeeded("Found in " + url.lastPathComponent)
-            result.forEach { logIfNeeded($0.matchString.description) }
-            logIfNeeded("")
-        }
-        return dictionary
-    }
-    
-    private func getLocalizableDictionary() throws -> [URL: MatchDictionary] {
-        let matcher = StringMatcher(format: .strings)
-        let iterator = FileIterator(acceptedFileExtensions: ["strings"],
-                                    excludedFolderNames: ["Pods"])
-        var dictionary = [URL: MatchDictionary]()
-        try iterator.enumerate { url, content in
-            guard let result = try? matcher.find(in: content) else { return }
-            logIfNeeded("Found localizable.strings at " + url.relativePath + "\n")
-            dictionary[url] = MatchDictionary(result)
-        }
-        return dictionary
-    }
     
     private func updated(_ dictionary: [URL: MatchDictionary],
                          with newMatchDictionary: MatchDictionary) -> [URL: MatchDictionary] {

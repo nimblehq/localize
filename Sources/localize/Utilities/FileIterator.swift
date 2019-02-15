@@ -20,10 +20,10 @@ final class FileIterator {
     let excludedFolderNames: Set<String>
     let excludedFileNames: Set<String>
     
-    init(acceptedFileExtensions: [String] = [],
+    init(acceptedFileExtensions: [FileExtension] = [],
          excludedFolderNames: [String] = [],
          excludedFileNames: [String] = []) {
-        self.acceptedFileExtensions = Set(acceptedFileExtensions)
+        self.acceptedFileExtensions = Set(acceptedFileExtensions.map(\.rawValue))
         self.excludedFolderNames = Set(excludedFolderNames)
         self.excludedFileNames = Set(excludedFileNames + ["genstrings.swift"])
     }
