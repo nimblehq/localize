@@ -10,22 +10,42 @@ import Foundation
 
 final class Runner {
     
+    enum Error: Swift.Error {
+        
+        case noOutput(stepName: String, type: Any.Type)
+        
+    }
+    
     var verbose = true
     
     func run() throws {
-        log(step: "Generating strings...")
-        let newDictionary = try getNewMatchDictionary()
+        guard let dictionary = try run(step: GenerateStringsStep()).output else {
+            throw Error.noOutput(stepName: GenerateStringsStep.name,
+                                 type: GenerateStringsStep.Output.self)
+        }
         
         log(step: "Getting current localizable.strings files...")
         let localizableDictionary = try getLocalizableDictionary()
         
         log(step: "Merging new strings with current ones...")
-        let result = updated(localizableDictionary, with: newDictionary)
+        let result = updated(localizableDictionary, with: dictionary)
         
         log(step: "Writing to localizable.strings files...")
         try writeLocalizables(with: result)
         
         log(step: "Success! 🎉")
+    }
+    
+    @discardableResult
+    private func run<RunStep: Step>(step: RunStep) throws -> Result<RunStep.Output, RunStep.Error> {
+        log(step: RunStep.name)
+        logIfNeeded(RunStep.description)
+        
+        let result = step.run()
+        if case .failure(let error) = result, error.isFatal {
+            throw error
+        }
+        return result
     }
     
     // MARK: - private steps
