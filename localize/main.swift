@@ -9,5 +9,5 @@
 do {
     try Runner().run()
 } catch {
-    print(error)
+    print("\n ### ⚠️ Error: \(error) ### \n")
 }
