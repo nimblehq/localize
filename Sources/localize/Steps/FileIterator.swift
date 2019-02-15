@@ -29,6 +29,9 @@ final class FileIterator {
     }
     
     func enumerate(action: (URL, String) -> Void) throws {
+        // todo: - update
+        guard #available(OSX 10.11, *) else { throw Error.invalidURLPath }
+        
         let currentPath = CommandLine.arguments[0]
         let baseURL = URL(fileURLWithPath: fileManager.currentDirectoryPath)
         let directoryURL = URL(fileURLWithPath: currentPath, relativeTo: baseURL)
