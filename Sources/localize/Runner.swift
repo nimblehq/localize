@@ -23,14 +23,20 @@ final class Runner {
             throw Error.noOutput(stepName: GenerateStringsStep.name, type: GenerateStringsStep.Output.self)
         }
         
-        guard let urlForMatchDictionary = try run(step: GetCurrentLocalizableStringsStep()).output else {
-            throw Error.noOutput(stepName: GetCurrentLocalizableStringsStep.name,
-                                 type: GetCurrentLocalizableStringsStep.Output.self)
+        guard let urlForMatchDictionary = try run(step: GetLocalizableStringsStep()).output else {
+            throw Error.noOutput(stepName: GetLocalizableStringsStep.name,
+                                 type: GetLocalizableStringsStep.Output.self)
         }
 
-        log(step: "Merging new strings with current ones...")
-        let result = updated(urlForMatchDictionary, with: iteratedLocalizedKeys)
-
+        guard
+            let combinedMatchDictioanry = try run(step: CombineStringsStep(
+                localizableDictionary: urlForMatchDictionary,
+                iteratedMatchDictionary: iteratedLocalizedKeys)
+            ).output
+        else {
+            throw Error.noOutput(stepName: CombineStringsStep.name, type: CombineStringsStep.Output.self)
+        }
+        
         log(step: "Writing to localizable.strings files...")
         try writeLocalizables(with: result)
         

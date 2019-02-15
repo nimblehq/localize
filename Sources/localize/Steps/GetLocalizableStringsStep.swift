@@ -1,5 +1,5 @@
 //
-//  GetCurrentLocalizableStringsStep.swift
+//  GetLocalizableStringsStep.swift
 //  localize
 //
 //  Created by Pirush Prechathavanich on 2/15/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GetCurrentLocalizableStringsStep: Step {
+final class GetLocalizableStringsStep: Step {
     
     enum Error: BaseError {
         case iterationFailure(Swift.Error)
