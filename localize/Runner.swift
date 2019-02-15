@@ -35,9 +35,15 @@ final class Runner {
         let matcher = StringMatcher(format: .swift)
         let iterator = FileIterator(acceptedFileExtensions: ["swift"],
                                     excludedFolderNames: ["Pods"])
-        try iterator.enumerate { _, content in
-            guard let result = try? matcher.find(in: content) else { return }
+        try iterator.enumerate { url, content in
+            guard
+                let result = try? matcher.find(in: content),
+                !result.isEmpty
+            else { return }
             dictionary.merge(result) { $1 }
+            logIfNeeded("Found in " + url.lastPathComponent)
+            result.forEach { logIfNeeded($0.matchString.description) }
+            logIfNeeded("")
         }
         return dictionary
     }
@@ -46,26 +52,35 @@ final class Runner {
         let matcher = StringMatcher(format: .strings)
         let iterator = FileIterator(acceptedFileExtensions: ["strings"],
                                     excludedFolderNames: ["Pods"])
-        
         var dictionary = [URL: MatchDictionary]()
         try iterator.enumerate { url, content in
-            logIfNeeded("Found localizable.strings at " + url.relativePath + "\n")
             guard let result = try? matcher.find(in: content) else { return }
+            logIfNeeded("Found localizable.strings at " + url.relativePath + "\n")
             dictionary[url] = MatchDictionary(result)
         }
-        
         return dictionary
     }
     
     private func updated(_ dictionary: [URL: MatchDictionary],
                          with newMatchDictionary: MatchDictionary) -> [URL: MatchDictionary] {
         var result = [URL: MatchDictionary]()
-        dictionary.forEach { result[$0.key] = newMatchDictionary.merging($0.value) { $1 } }
+        dictionary.forEach {
+            logIfNeeded("")
+            logIfNeeded($0.key.relativePath)
+            logIfNeeded("")
+            result[$0.key] = newMatchDictionary.merging($0.value) {
+                if $0 != $1 { logIfNeeded("selecting \($1 ?? "-") over \($0 ?? "-")") }
+                return $1
+            }
+        }
+
         return result
     }
     
     private func writeLocalizables(with dictionary: [URL: MatchDictionary]) throws {
-        try dictionary.forEach { url, matchDictionary in
+        try dictionary
+            .filter { $0.key.lastPathComponent == "Localizable.strings" }
+            .forEach { url, matchDictionary in
             logIfNeeded("writing localizable.strings at \(url.relativePath)\n")
             
             let writer = LocalizableWriter()
