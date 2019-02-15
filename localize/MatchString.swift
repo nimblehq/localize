@@ -6,6 +6,8 @@
 //  Copyright © 2018 Nimbl3. All rights reserved.
 //
 
+typealias MatchDictionary = [MatchString: String?]
+
 struct MatchString: Hashable, Comparable, CustomStringConvertible {
     
     let domain: String
@@ -14,12 +16,32 @@ struct MatchString: Hashable, Comparable, CustomStringConvertible {
     
     let comment: String
     
-    var description: String { return "\(domain).\(module).\(name): \(comment)" }
+    // MARK: - custom string convertible
+    
+    var description: String {
+        return "\(domain).\(module).\(name)"
+    }
+    
+    // MARK: - hashable
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(domain)
+        hasher.combine(module)
+        hasher.combine(name)
+    }
+    
+    // MARK: - equatable
+    
+    static func == (lhs: MatchString, rhs: MatchString) -> Bool {
+        return lhs.domain == rhs.domain
+            && lhs.module == rhs.module
+            && lhs.name == rhs.name
+    }
+    
+    // MARK: - comparable
     
     static func < (lhs: MatchString, rhs: MatchString) -> Bool {
-        return lhs.domain < rhs.domain
-            || lhs.module < rhs.module
-            || lhs.name < rhs.name
+        return lhs.description < rhs.description
     }
     
 }

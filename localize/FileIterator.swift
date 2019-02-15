@@ -11,16 +11,14 @@ import Foundation
 final class FileIterator {
     
     enum Error: Swift.Error {
-        
         case invalidURLPath
-        
     }
     
     private let fileManager = FileManager.default
     
-    private let acceptedFileExtensions: Set<String>
-    private let excludedFolderNames: Set<String>
-    private let excludedFileNames: Set<String>
+    let acceptedFileExtensions: Set<String>
+    let excludedFolderNames: Set<String>
+    let excludedFileNames: Set<String>
     
     init(acceptedFileExtensions: [String] = [],
          excludedFolderNames: [String] = [],
@@ -31,33 +29,42 @@ final class FileIterator {
     }
     
     func enumerate(action: (URL, String) -> Void) throws {
-        let directoryURL = URL(fileURLWithPath: "")
+        let currentPath = CommandLine.arguments[0]
+        let baseURL = URL(fileURLWithPath: fileManager.currentDirectoryPath)
+        let directoryURL = URL(fileURLWithPath: currentPath, relativeTo: baseURL)
+            .deletingLastPathComponent()
         guard
             let enumerator = fileManager.enumerator(at: directoryURL,
                                                     includingPropertiesForKeys: [.isDirectoryKey],
                                                     options: [.skipsHiddenFiles],
                                                     errorHandler: nil)
-            else { return }
+        else { return }
         
         for case let fileURL as URL in enumerator {
-            if let isDirectory = try fileURL.resourceValues(forKeys: [.isDirectoryKey]).isDirectory,
-                isDirectory,
-                excludedFolderNames.contains(fileURL.lastPathComponent) {
+            if try isURLDirectory(fileURL), excludedFolderNames.contains(fileURL.lastPathComponent) {
                 enumerator.skipDescendants()
-                print("skip", fileURL)
                 continue
             }
-            
             if let content = validatedContent(from: fileURL) {
                 action(fileURL, content)
             }
         }
     }
     
+    // MARK: - private
+    
+    private func isURLDirectory(_ url: URL) throws -> Bool {
+        guard
+            let isDirectory = try url.resourceValues(forKeys: [.isDirectoryKey]).isDirectory
+        else { return false }
+        return isDirectory
+    }
+    
     private func validatedContent(from url: URL) -> String? {
         if acceptedFileExtensions.contains(url.pathExtension)
             && !excludedFileNames.contains(url.lastPathComponent) {
-            return try? String(contentsOf: url, encoding: .utf8)
+            do { return try String(contentsOf: url, encoding: .utf8) }
+            catch { return try? String(contentsOf: url, encoding: .utf16) }
         }
         return nil
     }
