@@ -27,7 +27,11 @@ struct StringMatcher {
     
     func find(in string: String) throws -> [Result] {
         let regex = try NSRegularExpression(pattern: format.regexPattern, options: .caseInsensitive)
-        let result = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.count))
+        let range = NSRange(
+            location: string.startIndex.encodedOffset,
+            length: string.endIndex.encodedOffset - string.startIndex.encodedOffset
+        )
+        let result = regex.matches(in: string, options: [], range: range)
         
         return try result
             .map { (string, $0) }
@@ -47,7 +51,7 @@ struct StringMatcher {
                     name: try substring(from: string, in: result.range(at: 3)),
                     comment: ""
                 ),
-                value: nil
+                value: ""
             )
         case .strings:
             return (
