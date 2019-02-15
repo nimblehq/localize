@@ -1,12 +1,12 @@
-# Git Repository Template
+# Localize
 
-Project repository template to set up all public projects at [Nimble](https://nimblehq.co/)
+A tool to iterate through Xcode project to get all localized keys that match our format and use those to write `.strings` files incrementally.
 
 ## Usage
 
-Clone the repository
+Put the executable file into the root of project and run it from there.
 
-`git clone git@github.com:nimblehq/git-template.git`
+Might be good to note that, as of now, since we haven't supported SPM yet, don't forget to add `localize` to your `.gitignore`.
 
 ## License
 
