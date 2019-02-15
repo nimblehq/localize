@@ -23,11 +23,14 @@ final class LocalizableWriter {
             .sorted { $0.key < $1.key }
             .map { matchString, value in
                 """
-                \(matchString.comment.isEmpty ? "" : "\\* \(matchString.comment) *\\\n")\
-                "\(matchString.domain).\(matchString.module).\(matchString.name)" = "\(value ?? "")"
+                \(matchString.comment.isEmpty ? "" : "/* \(matchString.comment) */\n")\
+                "\(matchString.domain).\(matchString.module).\(matchString.name)" = "\(value ?? "")";
+                
+                
                 """
             }
-            .joined(separator: "\n\n")
+            .joined(separator: "")
+        
         try content.write(to: url, atomically: true, encoding: .utf8)
     }
     

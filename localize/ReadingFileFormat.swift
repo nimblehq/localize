@@ -13,8 +13,8 @@ enum ReadingFileFormat {
     
     var regexPattern: String {
         switch self {
-        case .swift:        return "\"(\\w+)\\.(\\w+)\\.(\\w+)\".localized"
-        case .strings:      return "(\\/\\* (.*) \\*\\/(\r\n|\r|\n))?\"(\\w+)\\.(\\w+)\\.(\\w+)\" = \"(.*)\";"
+        case .swift:        return "\"(\\w.+)\\.(\\w.+)\\.(\\w.+)\".localized"
+        case .strings:      return "(\\/\\* (.*) \\*\\/(\r\n|\r|\n))?\"(\\w.+)\\.(\\w.+)\\.(\\w.+)\" = \"(.*)\";"
         }
     }
     
