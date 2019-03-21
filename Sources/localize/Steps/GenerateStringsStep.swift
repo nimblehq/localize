@@ -7,20 +7,6 @@
 
 import Foundation
 
-extension Collection {
-    
-    func map<U>(_ keyPath: KeyPath<Element, U>) -> [U] {
-        return map { $0[keyPath: keyPath] }
-    }
-    
-}
-
-enum FileExtension: String {
-    
-    case swift
-    case strings
-
-}
 
 final class GenerateStringsStep: Step {
     
