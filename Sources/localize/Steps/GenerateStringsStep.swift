@@ -7,20 +7,6 @@
 
 import Foundation
 
-extension Collection {
-    
-    func map<U>(_ keyPath: KeyPath<Element, U>) -> [U] {
-        return map { $0[keyPath: keyPath] }
-    }
-    
-}
-
-enum FileExtension: String {
-    
-    case swift
-    case strings
-
-}
 
 final class GenerateStringsStep: Step {
     
@@ -47,9 +33,6 @@ final class GenerateStringsStep: Step {
                 addLocalizedKeys(of: content, into: &dictionary)
             }
             // todo: - log for verbose
-            //logIfNeeded("Found in " + url.lastPathComponent)
-            //result.forEach { logIfNeeded($0.matchString.description) }
-            //logIfNeeded("")
             return .success(dictionary)
         } catch { return .failure(.iterationFailure(error)) }
     }

@@ -28,12 +28,20 @@
 		2140DD6A2216A41800FCAF8F /* GetLocalizableStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD692216A41800FCAF8F /* GetLocalizableStringsStep.swift */; };
 		2140DD6C2216AC8B00FCAF8F /* CombineStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */; };
 		2140DD6E2216AFF800FCAF8F /* WriteLocalizablesStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2140DD6D2216AFF800FCAF8F /* WriteLocalizablesStep.swift */; };
+		2152C33D22436C570002E1ED /* FileExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C33C22436C570002E1ED /* FileExtension.swift */; };
+		2152C33F22436C710002E1ED /* Collection+KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C33E22436C710002E1ED /* Collection+KeyPath.swift */; };
+		2152C34122436E6E0002E1ED /* CommandLineTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C34022436E6E0002E1ED /* CommandLineTool.swift */; };
+		2152C344224374C20002E1ED /* RunCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C343224374C20002E1ED /* RunCommand.swift */; };
+		2152C346224374DA0002E1ED /* CleanCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C345224374DA0002E1ED /* CleanCommand.swift */; };
+		2152C348224374EA0002E1ED /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C347224374EA0002E1ED /* Command.swift */; };
+		2152C34A224374FF0002E1ED /* NoOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C349224374FF0002E1ED /* NoOption.swift */; };
+		2152C34C224378E50002E1ED /* CleanStringsStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C34B224378E50002E1ED /* CleanStringsStep.swift */; };
+		2152C34F22437C490002E1ED /* CommandError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152C34E22437C490002E1ED /* CommandError.swift */; };
 		OBJ_31 /* Dictionary+Creational.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Dictionary+Creational.swift */; };
 		OBJ_32 /* FileIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* FileIterator.swift */; };
 		OBJ_33 /* LocalizableWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* LocalizableWriter.swift */; };
 		OBJ_34 /* MatchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MatchString.swift */; };
 		OBJ_35 /* ReadingFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ReadingFileFormat.swift */; };
-		OBJ_36 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Runner.swift */; };
 		OBJ_37 /* StringMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* StringMatcher.swift */; };
 		OBJ_38 /* UnlocalizedStringFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* UnlocalizedStringFinder.swift */; };
 		OBJ_39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* main.swift */; };
@@ -67,11 +75,19 @@
 		2140DD692216A41800FCAF8F /* GetLocalizableStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocalizableStringsStep.swift; sourceTree = "<group>"; };
 		2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineStringsStep.swift; sourceTree = "<group>"; };
 		2140DD6D2216AFF800FCAF8F /* WriteLocalizablesStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteLocalizablesStep.swift; sourceTree = "<group>"; };
+		2152C33C22436C570002E1ED /* FileExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExtension.swift; sourceTree = "<group>"; };
+		2152C33E22436C710002E1ED /* Collection+KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+KeyPath.swift"; sourceTree = "<group>"; };
+		2152C34022436E6E0002E1ED /* CommandLineTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineTool.swift; sourceTree = "<group>"; };
+		2152C343224374C20002E1ED /* RunCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCommand.swift; sourceTree = "<group>"; };
+		2152C345224374DA0002E1ED /* CleanCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanCommand.swift; sourceTree = "<group>"; };
+		2152C347224374EA0002E1ED /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		2152C349224374FF0002E1ED /* NoOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOption.swift; sourceTree = "<group>"; };
+		2152C34B224378E50002E1ED /* CleanStringsStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStringsStep.swift; sourceTree = "<group>"; };
+		2152C34E22437C490002E1ED /* CommandError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandError.swift; sourceTree = "<group>"; };
 		OBJ_10 /* FileIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIterator.swift; sourceTree = "<group>"; };
 		OBJ_11 /* LocalizableWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableWriter.swift; sourceTree = "<group>"; };
 		OBJ_12 /* MatchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchString.swift; sourceTree = "<group>"; };
 		OBJ_13 /* ReadingFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingFileFormat.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Runner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
 		OBJ_15 /* StringMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMatcher.swift; sourceTree = "<group>"; };
 		OBJ_16 /* UnlocalizedStringFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlocalizedStringFinder.swift; sourceTree = "<group>"; };
 		OBJ_17 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -104,6 +120,7 @@
 		2140DD592216775A00FCAF8F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2152C33E22436C710002E1ED /* Collection+KeyPath.swift */,
 				OBJ_9 /* Dictionary+Creational.swift */,
 			);
 			path = Extensions;
@@ -112,7 +129,10 @@
 		2140DD5A2216777400FCAF8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2152C34D22437C400002E1ED /* Errors */,
+				2152C33C22436C570002E1ED /* FileExtension.swift */,
 				OBJ_12 /* MatchString.swift */,
+				2152C349224374FF0002E1ED /* NoOption.swift */,
 				OBJ_13 /* ReadingFileFormat.swift */,
 				2140DD6422169E6E00FCAF8F /* Result.swift */,
 			);
@@ -122,6 +142,7 @@
 		2140DD5B221677B600FCAF8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2152C34022436E6E0002E1ED /* CommandLineTool.swift */,
 				OBJ_10 /* FileIterator.swift */,
 				OBJ_11 /* LocalizableWriter.swift */,
 				OBJ_15 /* StringMatcher.swift */,
@@ -133,9 +154,10 @@
 		2140DD5E2216831900FCAF8F /* Steps */ = {
 			isa = PBXGroup;
 			children = (
+				2152C34B224378E50002E1ED /* CleanStringsStep.swift */,
+				2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */,
 				2140DD5F2216833800FCAF8F /* GenerateStringsStep.swift */,
 				2140DD692216A41800FCAF8F /* GetLocalizableStringsStep.swift */,
-				2140DD6B2216AC8B00FCAF8F /* CombineStringsStep.swift */,
 				2140DD6D2216AFF800FCAF8F /* WriteLocalizablesStep.swift */,
 			);
 			path = Steps;
@@ -144,10 +166,28 @@
 		2140DD6122169E3F00FCAF8F /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				2140DD6222169E5800FCAF8F /* Step.swift */,
 				2140DD6622169EB300FCAF8F /* BaseError.swift */,
+				2152C347224374EA0002E1ED /* Command.swift */,
+				2140DD6222169E5800FCAF8F /* Step.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2152C342224374B00002E1ED /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				2152C345224374DA0002E1ED /* CleanCommand.swift */,
+				2152C343224374C20002E1ED /* RunCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		2152C34D22437C400002E1ED /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				2152C34E22437C490002E1ED /* CommandError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		OBJ_18 /* Tests */ = {
@@ -198,12 +238,12 @@
 		OBJ_8 /* localize */ = {
 			isa = PBXGroup;
 			children = (
+				2152C342224374B00002E1ED /* Commands */,
 				2140DD592216775A00FCAF8F /* Extensions */,
 				2140DD5A2216777400FCAF8F /* Models */,
 				2140DD5E2216831900FCAF8F /* Steps */,
 				2140DD6122169E3F00FCAF8F /* Protocols */,
 				2140DD5B221677B600FCAF8F /* Utilities */,
-				OBJ_14 /* Runner.swift */,
 				OBJ_17 /* main.swift */,
 			);
 			name = localize;
@@ -299,16 +339,24 @@
 				OBJ_31 /* Dictionary+Creational.swift in Sources */,
 				OBJ_32 /* FileIterator.swift in Sources */,
 				2140DD6C2216AC8B00FCAF8F /* CombineStringsStep.swift in Sources */,
+				2152C346224374DA0002E1ED /* CleanCommand.swift in Sources */,
 				OBJ_33 /* LocalizableWriter.swift in Sources */,
 				OBJ_34 /* MatchString.swift in Sources */,
+				2152C348224374EA0002E1ED /* Command.swift in Sources */,
 				2140DD6522169E6E00FCAF8F /* Result.swift in Sources */,
 				OBJ_35 /* ReadingFileFormat.swift in Sources */,
+				2152C34A224374FF0002E1ED /* NoOption.swift in Sources */,
 				2140DD6722169EB300FCAF8F /* BaseError.swift in Sources */,
-				OBJ_36 /* Runner.swift in Sources */,
+				2152C344224374C20002E1ED /* RunCommand.swift in Sources */,
+				2152C33F22436C710002E1ED /* Collection+KeyPath.swift in Sources */,
+				2152C33D22436C570002E1ED /* FileExtension.swift in Sources */,
+				2152C34C224378E50002E1ED /* CleanStringsStep.swift in Sources */,
 				OBJ_37 /* StringMatcher.swift in Sources */,
 				OBJ_38 /* UnlocalizedStringFinder.swift in Sources */,
 				2140DD6E2216AFF800FCAF8F /* WriteLocalizablesStep.swift in Sources */,
+				2152C34F22437C490002E1ED /* CommandError.swift in Sources */,
 				OBJ_39 /* main.swift in Sources */,
+				2152C34122436E6E0002E1ED /* CommandLineTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

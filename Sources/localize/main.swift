@@ -8,24 +8,10 @@
 
 import Foundation
 
-final class CommandLineTool {
-    
-    let arguments: [String]
-    
-    init(arguments: [String] = CommandLine.arguments) {
-        self.arguments = arguments
-    }
-    
-    func run() throws {
-        try Runner().run()
-    }
-    
-}
-
 let tool = CommandLineTool()
 
 do {
     try tool.run()
 } catch {
-    print("\n ### ⚠️ Error: \(error) ### \n")
+    print("\n ### ⚠️  Error: \(error) ### \n")
 }

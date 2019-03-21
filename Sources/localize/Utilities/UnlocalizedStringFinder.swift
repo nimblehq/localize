@@ -26,21 +26,3 @@ final class UnlocalizedStringFinder {
     }
     
 }
-
-extension Runner {
-    
-    func findUnlocalizedStrings() throws {
-        let finder = UnlocalizedStringFinder()
-        let iterator = FileIterator(acceptedFileExtensions: [.swift],
-                                    excludedFolderNames: ["Pods", "BraiveTests", "BraiveUITests"])
-        try iterator.enumerate { url, content in
-            guard
-                let result = try? finder.find(in: content),
-                !result.isEmpty
-            else { return }
-            print("> url: " + url.relativePath)
-            print(">")
-            result.forEach { print("> ", $0) }
-        }
-    }
-}
