@@ -33,9 +33,6 @@ final class GenerateStringsStep: Step {
                 addLocalizedKeys(of: content, into: &dictionary)
             }
             // todo: - log for verbose
-            //logIfNeeded("Found in " + url.lastPathComponent)
-            //result.forEach { logIfNeeded($0.matchString.description) }
-            //logIfNeeded("")
             return .success(dictionary)
         } catch { return .failure(.iterationFailure(error)) }
     }

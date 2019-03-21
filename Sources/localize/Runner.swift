@@ -10,36 +10,9 @@ import Foundation
 
 final class Runner {
     
-    enum Error: Swift.Error {
-        
-        case noOutput(stepName: String, type: Any.Type)
-        
-    }
-    
     var verbose = true
     
     func run() throws {
-        guard let iteratedLocalizedKeys = try run(step: GenerateStringsStep()).output else {
-            throw Error.noOutput(stepName: GenerateStringsStep.name, type: GenerateStringsStep.Output.self)
-        }
-        
-        guard let urlForMatchDictionary = try run(step: GetLocalizableStringsStep()).output else {
-            throw Error.noOutput(stepName: GetLocalizableStringsStep.name,
-                                 type: GetLocalizableStringsStep.Output.self)
-        }
-
-        guard
-            let combinedMatchDictionary = try run(step: CombineStringsStep(
-                localizableDictionary: urlForMatchDictionary,
-                iteratedMatchDictionary: iteratedLocalizedKeys)
-            ).output
-        else {
-            throw Error.noOutput(stepName: CombineStringsStep.name, type: CombineStringsStep.Output.self)
-        }
-        
-        try run(step: WriteLocalizablesStep(writingDictionary: combinedMatchDictionary))
-        
-        log(step: "Success! 🎉")
     }
     
     // MARK: - private helper

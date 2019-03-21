@@ -16,3 +16,28 @@ protocol Command {
     func run() throws
     
 }
+
+extension Command {
+    
+    @discardableResult
+    func run<RunStep: Step>(step: RunStep) throws -> Result<RunStep.Output, RunStep.Error> {
+        log(step: RunStep.name)
+        logIfNeeded(RunStep.description)
+        
+        let result = step.run()
+        if case .failure(let error) = result, error.isFatal {
+            throw error
+        }
+        return result
+    }
+    
+    func log(step: String) {
+        print("### " + step + " ###\n")
+    }
+    
+    func logIfNeeded(_ text: String) {
+        // todo: - guard verbose else { return }
+        print("> " + text + "\n")
+    }
+    
+}
