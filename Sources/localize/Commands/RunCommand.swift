@@ -28,12 +28,10 @@ struct RunCommand: Command {
                                         type: GetLocalizableStringsStep.Output.self)
         }
         
-        guard
-            let combinedMatchDictionary = try run(step: CombineStringsStep(
-                localizableDictionary: urlForMatchDictionary,
-                iteratedMatchDictionary: iteratedLocalizedKeys)
-                ).output
-        else {
+        guard let combinedMatchDictionary = try run(step: CombineStringsStep(
+            localizableDictionary: urlForMatchDictionary,
+            iteratedMatchDictionary: iteratedLocalizedKeys
+        )).output else {
             throw CommandError.noOutput(stepName: CombineStringsStep.name,
                                         type: CombineStringsStep.Output.self)
         }

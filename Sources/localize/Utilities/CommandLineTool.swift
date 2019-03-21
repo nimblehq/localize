@@ -23,6 +23,7 @@ final class CommandLineTool {
     
     func run() throws {
         var arguments = self.arguments
+        arguments.removeFirst() // remove tool name (localize)
         
         guard arguments.count > 0 else { throw Error.missingCommandArgument }
         

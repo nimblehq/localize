@@ -13,5 +13,5 @@ let tool = CommandLineTool()
 do {
     try tool.run()
 } catch {
-    print("\n ### ⚠️ Error: \(error) ### \n")
+    print("\n ### ⚠️  Error: \(error) ### \n")
 }

@@ -27,8 +27,7 @@ struct CleanCommand: Command {
         guard let cleanedMatchDictionary = try run(step: CleanStringsStep(
             localizableDictionary: urlForMatchDictionary,
             iteratedMatchDictionary: iteratedLocalizedKeys
-        )).output
-        else {
+        )).output else {
             throw CommandError.noOutput(stepName: CleanStringsStep.name,
                                         type: CleanStringsStep.Output.self)
         }
