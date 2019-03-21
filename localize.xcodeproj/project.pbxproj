@@ -42,7 +42,6 @@
 		OBJ_33 /* LocalizableWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* LocalizableWriter.swift */; };
 		OBJ_34 /* MatchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MatchString.swift */; };
 		OBJ_35 /* ReadingFileFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ReadingFileFormat.swift */; };
-		OBJ_36 /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Runner.swift */; };
 		OBJ_37 /* StringMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* StringMatcher.swift */; };
 		OBJ_38 /* UnlocalizedStringFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* UnlocalizedStringFinder.swift */; };
 		OBJ_39 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* main.swift */; };
@@ -89,7 +88,6 @@
 		OBJ_11 /* LocalizableWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableWriter.swift; sourceTree = "<group>"; };
 		OBJ_12 /* MatchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchString.swift; sourceTree = "<group>"; };
 		OBJ_13 /* ReadingFileFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingFileFormat.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Runner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
 		OBJ_15 /* StringMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMatcher.swift; sourceTree = "<group>"; };
 		OBJ_16 /* UnlocalizedStringFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlocalizedStringFinder.swift; sourceTree = "<group>"; };
 		OBJ_17 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 				2140DD5E2216831900FCAF8F /* Steps */,
 				2140DD6122169E3F00FCAF8F /* Protocols */,
 				2140DD5B221677B600FCAF8F /* Utilities */,
-				OBJ_14 /* Runner.swift */,
 				OBJ_17 /* main.swift */,
 			);
 			name = localize;
@@ -351,7 +348,6 @@
 				2152C34A224374FF0002E1ED /* NoOption.swift in Sources */,
 				2140DD6722169EB300FCAF8F /* BaseError.swift in Sources */,
 				2152C344224374C20002E1ED /* RunCommand.swift in Sources */,
-				OBJ_36 /* Runner.swift in Sources */,
 				2152C33F22436C710002E1ED /* Collection+KeyPath.swift in Sources */,
 				2152C33D22436C570002E1ED /* FileExtension.swift in Sources */,
 				2152C34C224378E50002E1ED /* CleanStringsStep.swift in Sources */,
