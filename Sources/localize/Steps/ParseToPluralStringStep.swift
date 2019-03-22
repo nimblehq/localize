@@ -1,5 +1,5 @@
 //
-//  GetStringsdictPluralStringsSteps.swift
+//  ParseToPluralStringStep.swift
 //  localize
 //
 //  Created by Pirush Prechathavanich on 3/22/19.
@@ -7,17 +7,20 @@
 
 import AEXML
 
-final class GetStringsPluralStringsStep: Step {
+final class ParseToPluralStringStep: Step {
     
     enum Error: BaseError {
         
-        case failed
+        case unableToRead(error: Swift.Error)
+        case invalidFormat(dueTo: String)
         case missingKey(PluralKey)
         
         var localizedDescription: String {
             switch self {
-            case .failed:
-                return "failed"
+            case .unableToRead(let error):
+                return "Unable to read content with error - \(error.localizedDescription)"
+            case .invalidFormat(let reason):
+                return "Invalid stringsdict format due to " + reason
             case .missingKey(let key):
                 return "Failed due to missing key '\(key.rawValue)'"
             }
@@ -25,9 +28,9 @@ final class GetStringsPluralStringsStep: Step {
         
     }
     
-    static let name: String = "Generate plural strings from current stringsdict files (.stringsdict)"
+    static let name: String = "Parse content to plural strings"
     
-    static let description: String = ""
+    static let description: String = "Read and translate file content into readable plural strings"
     
     let content: String
     
@@ -44,35 +47,26 @@ final class GetStringsPluralStringsStep: Step {
             let document = try AEXMLDocument(xml: content)
             let dictionary = document["plist"]["dict"]
             
-            print(dictionary.xml)
-            
-            print("\n\n###################### \n\n")
-            try generate(from: dictionary.children)
-            
-            return .success([])
+            return .success(try generate(from: dictionary.children))
         } catch let error as Error {
             return .failure(error)
-        } catch { return .failure(.failed) }
+        } catch { return .failure(.unableToRead(error: error)) }
     }
     
     // MARK: - private helper
     
-    private func generate(from elements: [AEXMLElement]) throws {
+    private func generate(from elements: [AEXMLElement]) throws -> [PluralString] {
         guard elements.count % 2 == 0 else {
-            return print("Nodes are supposed to be pairs, but instead got \(elements.count)")
+            throw Error.invalidFormat(dueTo: "Nodes are supposed to be pairs, but instead got \(elements.count)")
         }
 
-        let pluralStrings = try stride(from: 0, to: elements.count, by: 2)
+        return try stride(from: 0, to: elements.count, by: 2)
             .map { (key: elements[$0].string, dictionary: elements[$0 + 1]) }
             .map(createPluralString)
-        
-        pluralStrings.forEach {
-            print(">", $0.key, $0.dictionary.map { "\($0.rawValue): \($1)" })
-        }
     }
 
     private func createPluralString(key: String, element: AEXMLElement) throws -> PluralString {
-        guard let variable = getValue(fromKey: .localizedFormat, in: element) else {
+        guard let _ = getValue(fromKey: .localizedFormat, in: element) else {
             throw Error.missingKey(.localizedFormat)
         }
         
@@ -108,7 +102,7 @@ final class GetStringsPluralStringsStep: Step {
         guard
             let keyElements = element["key"].all,
             let index = keyElements.firstIndex(where: { $0.value == key })
-            else { return nil }
+        else { return nil }
         
         return element["string"].all?[index].value
     }

@@ -19,9 +19,9 @@ struct StringMatcher {
         
     }
     
-    let format: ReadingFileFormat
+    let format: ReadingFormat
     
-    init(format: ReadingFileFormat) {
+    init(format: ReadingFormat) {
         self.format = format
     }
     
@@ -43,7 +43,7 @@ struct StringMatcher {
     private func createMatchStringWithValue(from string: String,
                                             with result: NSTextCheckingResult) throws -> Result {
         switch format {
-        case .swift:
+        case .swift, .pluralSwift:
             return (
                 MatchString(
                     domain: try substring(from: string, in: result.range(at: 1)),

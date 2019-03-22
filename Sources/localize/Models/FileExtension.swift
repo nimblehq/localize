@@ -9,5 +9,6 @@ enum FileExtension: String {
     
     case swift
     case strings
+    case stringsdict
     
 }

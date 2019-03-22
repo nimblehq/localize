@@ -20,9 +20,17 @@ final class GenerateStringsStep: Step {
     
     var verbose: Bool = true
     
-    private let matcher = StringMatcher(format: .swift)
+    private let matcher: StringMatcher
     private let iterator = FileIterator(acceptedFileExtensions: [.swift],
                                         excludedFolderNames: ["Pod"])
+    
+    init(format: ReadingFormat) {
+        matcher = StringMatcher(format: format)
+    }
+    
+    var format: ReadingFormat {
+        return matcher.format
+    }
     
     // MARK: - step
     

@@ -30,6 +30,7 @@ final class CommandLineTool {
         switch arguments.removeFirst() {
         case RunCommand.key:            try RunCommand(arguments: arguments).run()
         case CleanCommand.key:          try CleanCommand().run()
+        case PluralizeCommand.key:      try PluralizeCommand().run()
         default:                        throw Error.invalidCommandArgument
         }
     }

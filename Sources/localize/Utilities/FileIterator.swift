@@ -65,8 +65,7 @@ final class FileIterator {
     private func validatedContent(from url: URL) -> String? {
         if acceptedFileExtensions.contains(url.pathExtension)
             && !excludedFileNames.contains(url.lastPathComponent) {
-            do { return try String(contentsOf: url, encoding: .utf8) }
-            catch { return try? String(contentsOf: url, encoding: .utf16) }
+            return try? String(contentsOf: url)
         }
         return nil
     }

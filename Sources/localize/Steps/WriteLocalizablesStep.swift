@@ -15,7 +15,7 @@ final class WriteLocalizablesStep: Step {
     
     static let name: String = "Write values to Localizable.strings files"
     
-    static let description: String = ""
+    static let description: String = "Replace current values of Localizable.strings files with the new input"
     
     var verbose: Bool = true
     

@@ -14,7 +14,7 @@ struct CleanCommand: Command {
     // MARK: - command
     
     func run() throws {
-        guard let iteratedLocalizedKeys = try run(step: GenerateStringsStep()).output else {
+        guard let iteratedLocalizedKeys = try run(step: GenerateStringsStep(format: .swift)).output else {
             throw CommandError.noOutput(stepName: GenerateStringsStep.name,
                                         type: GenerateStringsStep.Output.self)
         }

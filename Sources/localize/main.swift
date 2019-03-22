@@ -6,8 +6,6 @@
 //  Copyright © 2018 Nimbl3. All rights reserved.
 //
 
-import Foundation
-
 let tool = CommandLineTool()
 
 do {
