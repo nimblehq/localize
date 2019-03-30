@@ -32,7 +32,7 @@ extension Command {
     }
     
     func log(step: String) {
-        print("### " + step + " ###\n")
+        print("### 🌳 " + step + " ###\n")
     }
     
     func logIfNeeded(_ text: String) {
